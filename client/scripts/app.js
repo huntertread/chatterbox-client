@@ -20,10 +20,12 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
+      debugger;
       console.log(data);
       for (var i = 0; i < data.results.length; i++) {
         MessagesView.renderMessage({username: data.results[i].username, text: data.results[i].text, roomname: data.results[i].roomname});
         // Messages[i] = {username: data.results[i].username, text: data.results[i].text, roomname: data.results[i].roomname};
+        RoomsView.render({roomname: data.result[i].roomname});
         // ({roomname: data.result[i].roomname})
       }
 
