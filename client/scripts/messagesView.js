@@ -1,11 +1,15 @@
 var MessagesView = {
 
   $chats: $('#chats'),
+  $message: $('#message').val(),
 
-  initialize: function() {
+  initialize: function () {
+
+
   },
 
-  render: function() {
+  renderMessage: function (msg) {
+    MessagesView.$chats.append(MessageView.render(msg));
   }
 
 };
