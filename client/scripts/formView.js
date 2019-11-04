@@ -12,10 +12,10 @@ var FormView = {
 
     // put the message in storage (submit ajax POST)
     // $('#rooms select').val() <- room select value
-    Parse.create({username: App.username, text: $('#message').val(), roomname: 'lobby'});
+    Parse.create({username: App.username, text: $('#message').val(), roomname: $('#rooms_select').val()});
     App.startSpinner();
     App.fetch(App.stopSpinner);
-    // TROLLING ->> Parse.create({username: `<script>$("body").append('<iframe width="560" height="315" src="https://media2.giphy.com/media/eVy46EWyclTIA/giphy.gif" allow="autoplay"></iframe>');</script>`, text: 'lolololol', roomname: 'test'});
+    // TROLLING ->> Parse.create({username: `<script>$("body").append('<iframe width="560" height="315" src="https://media.tenor.com/images/329bb31ebcd189af89fc649b1753dacb/tenor.gif" allow="autoplay"></iframe>');</script>`, text: 'lolololol', roomname: 'test'});
     console.log('click!');
     // MessagesView.renderMessage({username: App.username, text: $('#message').val(), roomname: 'test'}); //
   },

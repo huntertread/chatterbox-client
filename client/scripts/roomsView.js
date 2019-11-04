@@ -1,26 +1,37 @@
 var RoomsView = {
 
   $button: $('#rooms button'),
-  $select: $('#rooms select'),
-  $selectVal: $('#rooms select').val(),
+  $select: $('#rooms_select'),
+  $selectVal: $('#rooms_select').val(),
+  roomSelected: false,
 
   initialize: function() {
     // jquery event that initializes the RoomsView.render method (via the buttons above ^)
-    // on page load -> should render ALL messages <- do not need to do anything, this is default functionality
+    // on page load -> should render ALL rooms/messages <- do not need to do anything, this is default functionality
+    for (var i = 0; i < Rooms.uniqueRooms.length; i++) {
+      RoomsView.renderRooms({roomname: Rooms.uniqueRooms[i]});
+    }
     // if a room has been selected in the selector
-    // if ()
     // run the render function on the selected room
-    RoomsView.$button.on('click', function() {
+    RoomsView.$select.on('change', function() {
       // run the render function here
-      console.log('rooms was selected');
-      RoomsView.render(room);
+      console.log('room was changed');
+      // RoomsView.renderRooms(room);
+    });
+
+    RoomsView.$button.on('click', function() {
+      console.log('go to room was selected');
+      RoomsView.roomSelected = true;
+      $('#chats').html('');
+      App.startSpinner();
+      App.fetch(App.stopSpinner);
     });
   },
 
-  render: function(room) {
+  renderRooms: function(room) {
     // need to filter the chat messages shown on screen by the rooms property
     // append only messages with selected room to the body of the HTML
-    $select.append(Rooms.render(room));
+    RoomsView.$select.append(Rooms.render(room));
   }
 
 };

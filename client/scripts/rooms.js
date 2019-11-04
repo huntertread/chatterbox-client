@@ -1,8 +1,10 @@
 var Rooms = {
 
+  uniqueRooms: [],
+
   render: _.template(`
 
-        <div class="room"><%= roomname %></div>
+        <option value="<%- roomname %>"><%- roomname %></option>
 
     `)
 
